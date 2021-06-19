@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<head>
+    <meta charset="UTF-8">
+    <title>Tution Fees</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+{% endblock %}
+{% block content %}
+<body>
+
+    <a href="{% url 'add' %}" class="btn btn-sm btn-outline-secondary">Add Student</a>
+    <table class="listview table">
+          <thead>
+            <tr>
+              <th scope="col">Student Name</th>
+              <th scope="col">Department</th>
+              <th scope="col">Student ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in object_list %}
+            <tr>
+                <td><a href="{{ item.get_absolute_url }}">{{item.full_name}}</a></td>
+              <td>{{item.department}}</td>
+              <td>{{item.studentid}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+</body>
+{% endblock %}
