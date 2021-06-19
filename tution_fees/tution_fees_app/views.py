@@ -193,7 +193,7 @@ class payment(View):
         form = DetailsForm(self.request.POST)
         if form.is_valid():
             print("yes")
-            secret_key = 'sk_live_9dc5dbd6e003c9c48b9260b9e6e291ff58f5e8d3'
+            secret_key = ''
             url = 'https://api.paystack.co/transaction/initialize'
             req_amount = form.cleaned_data['amount']
             if req_amount >= 50:
@@ -255,7 +255,7 @@ class Otp(View):
         code = randomize.randint(10000, 99999)
         details = Details.objects.get(studentid=self.request.user.username)
         mobile = details.mobile
-        url = f"https://apps.mnotify.net/smsapi?key=P6vcP5SiC2jijtuv2GFiT6h1b&to={mobile}&msg=Your Verification code for tutionfees is {code}&sender_id=PressStory"
+        url = f"https://apps.mnotify.net/smsapi?key=''&to={mobile}&msg=Your Verification code for tutionfees is {code}&sender_id=''"
 
         req = requests.post(url)
         global mod_req
